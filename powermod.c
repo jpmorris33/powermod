@@ -83,6 +83,9 @@ printf("Device opened OK, using MIDI channel %d\n", midichannel);
 for(;;)	{
 	len = fread(&ev, 1, sizeof(ev), fp);
 	if(len > 1) {
+		// The magic numbers from the event system
+		// came from Stefan Sundin's powermate client
+
 		if(ev.type == EV_REL && ev.code == 7) {
 			if(ev.value == -1) {
 				val -= accel;
